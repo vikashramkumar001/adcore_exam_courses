@@ -1260,18 +1260,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AppService: () => (/* binding */ AppService)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 1699);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 4860);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../environments/environment */ 553);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 4860);
+
 
 
 class AppService {
   constructor(http) {
     this.http = http;
-    this.getCoursesURL = 'http://localhost:1378/get/courses';
-    this.deleteCourseURL = 'http://localhost:1378/delete/course/';
-    this.createCourseURL = 'http://localhost:1378/create/course';
-    this.updateCourseURL = 'http://localhost:1378/update/course/';
-    this.getListsURL = 'http://localhost:1378/get/lists';
+    this.baseApiURL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.API_URL;
+    this.getCoursesURL = this.baseApiURL + 'get/courses';
+    this.deleteCourseURL = this.baseApiURL + 'delete/course/';
+    this.createCourseURL = this.baseApiURL + 'create/course';
+    this.updateCourseURL = this.baseApiURL + 'update/course/';
+    this.getListsURL = this.baseApiURL + 'get/lists';
     this.serviceGetCourses = params => {
       return this.http.get(this.getCoursesURL, {
         params
@@ -1291,9 +1294,9 @@ class AppService {
     };
   }
   static #_ = this.ɵfac = function AppService_Factory(t) {
-    return new (t || AppService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient));
+    return new (t || AppService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient));
   };
-  static #_2 = this.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+  static #_2 = this.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
     token: AppService,
     factory: AppService.ɵfac,
     providedIn: 'root'
@@ -1350,6 +1353,24 @@ class ListValidatorDirective {
     }])]
   });
 }
+
+/***/ }),
+
+/***/ 553:
+/*!*****************************************!*\
+  !*** ./src/environments/environment.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   environment: () => (/* binding */ environment)
+/* harmony export */ });
+const environment = {
+  production: false,
+  API_URL: 'https://adcore-exam-hyahafdsgpg0h4c8.eastus-01.azurewebsites.net/'
+};
 
 /***/ }),
 

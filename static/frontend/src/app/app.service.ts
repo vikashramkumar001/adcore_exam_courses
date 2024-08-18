@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,13 @@ export class AppService {
   constructor(private http: HttpClient) {
   }
 
-  getCoursesURL = 'http://localhost:1378/get/courses';
-  deleteCourseURL = 'http://localhost:1378/delete/course/';
-  createCourseURL = 'http://localhost:1378/create/course';
-  updateCourseURL = 'http://localhost:1378/update/course/';
-  getListsURL = 'http://localhost:1378/get/lists';
+  baseApiURL = environment.API_URL
+
+  getCoursesURL = this.baseApiURL + 'get/courses';
+  deleteCourseURL = this.baseApiURL + 'delete/course/';
+  createCourseURL = this.baseApiURL + 'create/course';
+  updateCourseURL = this.baseApiURL + 'update/course/';
+  getListsURL = this.baseApiURL + 'get/lists';
 
   serviceGetCourses = (params: any): Observable<any> => {
     return this.http.get(this.getCoursesURL, {params});
